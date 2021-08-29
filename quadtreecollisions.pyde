@@ -25,8 +25,16 @@ def setup():
     particles = []
     
     # populate particles
-    for i in range(500):
-        particles.append(Particle(random(width), random(height)))
+    for i in range(1000):
+        
+        x = randomGaussian() * (width * 0.2) + width/2
+        y = randomGaussian() * (height * 0.2) + height/2
+        
+        x = constrain(x, 0, width)
+        y = constrain(y, 0, height)
+        
+        p = Particle(x, y)
+        particles.append(p)
         
     
 def draw():
@@ -44,7 +52,7 @@ def draw():
         qt.insert(p)
         
     
-    R = 10 # radius of bounding box
+    R = 12 # radius of bounding box
     # check if particles collide
     for particle in particles:
         points = qt.query(Rectangle(particle.x-R, particle.y-R, 2*R, 2*R))

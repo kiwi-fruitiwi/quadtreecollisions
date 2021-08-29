@@ -2,13 +2,14 @@ class Particle:
     def __init__(self, x, y):
         self.x = x
         self.y = y
-        self.r = 6
+        self.r = 2
         self.highlighted = False
     
     
     def move(self):
-        self.x += random(-1, 1)
-        self.y += random(-1, 1)
+        JITTER = 5
+        self.x += random(-JITTER, JITTER)
+        self.y += random(-JITTER, JITTER)
     
     
     def render(self):
